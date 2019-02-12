@@ -1,17 +1,20 @@
 package com.proartz;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Main {
+
+    public static String file = "input.txt";
 
     public static void main(String[] args) {
         FileInputStream in = null;
         FileOutputStream out = null;
 
         try{
-            in = new FileInputStream("input.txt");
+            in = new FileInputStream(file);
             out = new FileOutputStream("output.txt");
 
             int c;
@@ -19,14 +22,16 @@ public class Main {
             while((c = in.read()) != -1) {
                 out.write(c);
             }
-        } catch(IOException e) {
-            System.out.println(e.getMessage());
+        }catch(FileNotFoundException e) {
+            System.err.format("File: %s not found.", file );
+        }catch(IOException e) {
+            System.err.println(e.toString());
         } finally {
             if(in != null) {
                 try {
                     in.close();
                 } catch(IOException e) {
-                    System.out.println(e.getMessage());
+                    System.err.println(e.toString());
                 }
             }
             if(out != null) {
