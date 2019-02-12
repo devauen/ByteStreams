@@ -5,17 +5,17 @@ import java.io.*;
 public class Main {
 
     public static void main(String[] args) throws IOException{
-        FileReader in = null;
-        FileWriter out = null;
+        BufferedReader in = null;
+        PrintWriter out = null;
 
         try{
-            in = new FileReader("input.txt");
-            out = new FileWriter("output.txt");
+            in = new BufferedReader(new FileReader("input.txt"));
+            out = new PrintWriter(new FileWriter("output.txt"));
 
-            int c;
+            String line;
 
-            while((c = in.read()) != -1) {
-                out.write(c);
+            while((line = in.readLine()) != null) {
+                out.println(line);
             }
         }finally {
             if(in != null) {
