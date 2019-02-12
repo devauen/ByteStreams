@@ -1,21 +1,16 @@
 package com.proartz;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class Main {
 
-    public static String file = "input.txt";
-
     public static void main(String[] args) throws IOException{
-        FileInputStream in = null;
-        FileOutputStream out = null;
+        FileReader in = null;
+        FileWriter out = null;
 
         try{
-            in = new FileInputStream(file);
-            out = new FileOutputStream("output.txt");
+            in = new FileReader("input.txt");
+            out = new FileWriter("output.txt");
 
             int c;
 
