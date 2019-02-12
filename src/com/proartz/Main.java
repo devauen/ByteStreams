@@ -9,7 +9,7 @@ public class Main {
 
     public static String file = "input.txt";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         FileInputStream in = null;
         FileOutputStream out = null;
 
@@ -22,24 +22,12 @@ public class Main {
             while((c = in.read()) != -1) {
                 out.write(c);
             }
-        }catch(FileNotFoundException e) {
-            System.err.format("File: %s not found.", file );
-        }catch(IOException e) {
-            System.err.println(e.toString());
-        } finally {
+        }finally {
             if(in != null) {
-                try {
-                    in.close();
-                } catch(IOException e) {
-                    System.err.println(e.toString());
-                }
+                in.close();
             }
             if(out != null) {
-                try {
-                    out.close();
-                } catch(IOException e) {
-                    System.out.println(e.getMessage());
-                }
+                out.close();
             }
         }
     }
